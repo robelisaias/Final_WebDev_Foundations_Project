@@ -70,7 +70,7 @@ This project provides a **centralized and user-friendly platform** where users c
 
 ## 🖼️ Low-Fidelity Sketch
 
-(Add your wireframe image here or link to it)
+![Wireframe](assets/store_wireframe_full.png)
 
 ---
 
