@@ -47,3 +47,54 @@ loadProducts();
 function viewProduct(id) {
   window.location.href = `product.html?id=${id}`;
 }
+
+
+
+// PRODUCT DETAILS PAGE LOGIC
+
+const detailsContainer = document.getElementById("product-details-container");
+
+if (detailsContainer) {
+
+  const params = new URLSearchParams(window.location.search);
+  const productId = params.get("id");
+
+  async function loadProductDetails() {
+    try {
+      const response = await fetch("assets/products.json");
+
+      if (!response.ok) {
+        throw new Error("Failed to load product");
+      }
+
+      const products = await response.json();
+
+      const product = products.find(p => p.id == productId);
+
+      if (!product) {
+        detailsContainer.innerHTML = "<p>Product not found.</p>";
+        return;
+      }
+
+      detailsContainer.innerHTML = `
+        <div class="product-box">
+          <img src="${product.image}" alt="${product.title}">
+          
+          <div class="product-info">
+            <h1>${product.title}</h1>
+            <p>${product.description}</p>
+            <p><strong>Price:</strong> $${product.price}</p>
+            <button onclick="addToCart(${product.id})">Add to Cart</button>
+          </div>
+        </div>
+      `;
+
+    } catch (error) {
+      console.error(error);
+      detailsContainer.innerHTML = "<p>Error loading product.</p>";
+    }
+  }
+
+  loadProductDetails();
+}
+
