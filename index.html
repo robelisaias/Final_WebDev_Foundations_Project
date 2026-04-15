@@ -1,21 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>African and Import Goods Store</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afrique Store</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
-        <div>
-            <img src="assets/african_store_navbar_logo.svg" alt="African and Import Goods Store Logo" class="navbar-logo">
-        </div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <h2 class="logo">Afrique</h2>
+
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Authentic African Products</h1>
+    <p>Discover handcrafted goods and cultural treasures</p>
+    <a href="#products" class="btn">Shop Now</a>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="products">
+    <h2>Featured Products</h2>
+
+    <!-- THIS is where JS will inject products later -->
+    <div id="product-container" class="product-grid">
+
+      <!-- TEMPORARY STATIC CARD (we will remove later) -->
+      <div class="product-card">
+        <div class="product-img">Image</div>
+        <h3>Sample Product</h3>
+        <p>$29.99</p>
+        <button>View Product</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Afrique Store</p>
+  </footer>
+
 </body>
 </html>
