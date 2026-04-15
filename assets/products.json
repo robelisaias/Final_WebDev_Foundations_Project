@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Handwoven Basket",
+    "price": 34.99,
+    "category": "home decor",
+    "image": "assets/Handwoven_Basket.jpg ",
+    "description": "Beautiful handmade basket from Eritrea."
+  },
+  {
+    "id": 2,
+    "title": "Kente Cloth",
+    "price": 49.99,
+    "category": "textiles",
+    "image": "assets/Kente_cloth.jpeg",
+    "description": "Authentic kente cloth with vibrant colors."
+  },
+  {
+    "id": 3,
+    "title": "Wooden Wall Decor",
+    "price": 59.99,
+    "category": "art",
+    "image": "assets/Wooden_wall_decor.jpg",
+    "description": "Traditional hand-carved African wooden decor."
+  },
+  {
+    "id": 4,
+    "title": "Clay Pot",
+    "price": 24.99,
+    "category": "ceramics",
+    "image": "assets/Clay_pot.jpg",
+    "description": "Natural clay pot used for cooking."
+  },
+  {
+    "id": 5,
+    "title": "Beaded Necklace",
+    "price": 19.99,
+    "category": "jewelry",
+    "image": "assets/Beaded_necklace.jpg",
+    "description": "Handmade colorful African bead necklace."
+  },
+  {
+    "id": 6,
+    "title": "African Drum",
+    "price": 79.99,
+    "category": "instruments",
+    "image": "assets/African_drum.webp",
+    "description": "Traditional drum with rich sound and craftsmanship."
+  }
+]
