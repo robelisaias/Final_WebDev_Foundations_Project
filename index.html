@@ -29,7 +29,32 @@
     <p>Discover handcrafted goods and cultural treasures</p>
     <a href="#products" class="btn">Shop Now</a>
   </section>
+<section class="searchAndFilter"><div class="search-filter">
 
+  <!-- SEARCH -->
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Search products..."
+  />
+
+  <!-- FILTER BUTTONS -->
+  <div class="filters">
+    <h3>Filters:</h3>
+    <button onclick="setFilter('all')" class="active">All</button>
+    <button onclick="setFilter('home decor')">Home Decor</button>
+    <button onclick="setFilter('textiles')">Textiles</button>
+    <button onclick="setFilter('art')">Art</button>
+    <button onclick="setFilter('ceramics')">Ceramics</button>
+    
+    <select id="sortSelect">
+  <option value="default">Sort By</option>
+  <option value="low-high">Price: Low to High</option>
+  <option value="high-low">Price: High to Low</option>
+</select>
+  </div>
+
+</div></section>
   
   <section id="products" class="products">
     <h2>Featured Products</h2>

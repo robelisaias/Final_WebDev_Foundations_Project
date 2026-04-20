@@ -46,5 +46,21 @@
     "category": "instruments",
     "image": "assets/African_drum.webp",
     "description": "Traditional drum with rich sound and craftsmanship."
-  }
+  },
+  {
+  "id": 7,
+  "title": "Cowrie Shell Bracelet",
+  "price": 14.99,
+  "category": "jewelry",
+  "image": "assets/Cowrie_bracelet.jpg",
+  "description": "Traditional bracelet decorated with natural cowrie shells."
+},
+{
+  "id": 15,
+  "title": "Beaded Sandals",
+  "price": 34.99,
+  "category": "fashion",
+  "image": "assets/Beaded_sandals.jpg",
+  "description": "Handmade leather sandals decorated with colorful beadwork."
+}
 ]

@@ -73,7 +73,7 @@ body {
 /* HERO */
 .hero {
   text-align: center;
-  padding: 80px 20px;
+  padding: 100px 20px 80px;
   background: linear-gradient(to right, #C0522A, #E09F3E);
   color: white;
 }
@@ -94,7 +94,95 @@ body {
   color: var(--primary);
   text-decoration: none;
   border-radius: 5px;
+  
 }
+
+/* Search and Filters */
+
+.search-filter {
+  width: 90%;
+  max-width: 1100px;
+  margin: -40px auto 30px; /* THIS creates floating effect */
+  
+  background: white;
+  padding: 20px 25px;
+  border-radius: 12px;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* SEARCH */
+#searchInput {
+  padding: 12px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+/* FILTERS */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filters button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.filters button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+#sortSelect {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+
+  appearance: none;  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  outline: none;
+}
+
+/* Optional: hover like buttons */
+#sortSelect:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+#sortSelect {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23000' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  margin-left: auto;
+}
+
+
 
 /* PRODUCTS */
 .products {
@@ -109,7 +197,7 @@ body {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+ grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
@@ -178,6 +266,7 @@ body {
   color: white;
   cursor: pointer;
 }
+
 
 
 
@@ -259,3 +348,20 @@ body {
     text-align: center;
   }
 }
+
+
+/* Tablet */
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
