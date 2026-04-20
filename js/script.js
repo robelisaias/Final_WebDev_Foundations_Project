@@ -98,3 +98,37 @@ if (detailsContainer) {
   loadProductDetails();
 }
 
+//Api implementation section below
+
+async function loadcurrenty(){
+
+  try{
+    const response = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
+    
+    const data = await response.json();
+
+    document.getElementById('currencyResult').textContent = `1 USD = ${data.rates.CAD} CAD`;
+  }
+  catch(error){
+    document.getElementById('currencyResult').textContent = "Failed to load currency data.";}
+}
+
+
+async function loadCountry(){
+
+  try{
+    const response = await fetch("https://restcountries.com/v3.1/region/africa");
+    const data = await response.json();
+
+    const random = data[Math.floor(Math.random() * data.length)];
+
+    document.getElementById("countryInfo").textContent =
+      `${random.name.common} — Capital: ${random.capital}`;
+  }
+  catch(error){
+    document.getElementById("countryInfo").textContent = "Failed to load country data.";}
+}
+
+
+loadCountry();
+loadcurrenty();

@@ -183,6 +183,37 @@ body {
 }
 
 
+/*Api - Section */
+
+.api-section {
+  width: 90%;
+  max-width: 1100px;
+  margin: 50px auto;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* individual cards */
+.api-card {
+  flex: 1;
+  min-width: 280px;
+
+  background: #F5E6C8;
+  padding: 20px;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+  text-align: center;
+  color: #3B1205;
+}
+
+
+
+
 
 /* PRODUCTS */
 .products {
@@ -364,4 +395,9 @@ body {
   }
 }
 
-
+@media (max-width: 600px) {
+  #sortSelect {
+    margin-left: 0;
+    width: 100%;
+  }
+}
