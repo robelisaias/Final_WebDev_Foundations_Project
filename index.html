@@ -26,7 +26,7 @@
   
   <section class="hero">
     <h1>Authentic African Products</h1>
-    <p>Discover handcrafted goods and cultural treasures</p>
+    <p>Discover authentic African craft and imported treasures. Each piece tells a story of heritage, artistry and tradition.</p>
     <a href="#products" class="btn">Shop Now</a>
   </section>
 <section class="searchAndFilter"><div class="search-filter">
@@ -36,16 +36,17 @@
     type="text" 
     id="searchInput" 
     placeholder="Search products..."
+    oninput="handleSearch(this.value)"
   />
 
   <!-- FILTER BUTTONS -->
   <div class="filters">
     <h3>Filters:</h3>
-    <button onclick="setFilter('all')" class="active">All</button>
-    <button onclick="setFilter('home decor')">Home Decor</button>
-    <button onclick="setFilter('textiles')">Textiles</button>
-    <button onclick="setFilter('art')">Art</button>
-    <button onclick="setFilter('ceramics')">Ceramics</button>
+    <button onclick="setFilter('all', this)" class="active">All</button>
+<button onclick="setFilter('home decor', this)">Home Decor</button>
+<button onclick="setFilter('textiles', this)">Textiles</button>
+<button onclick="setFilter('art', this)">Art</button>
+<button onclick="setFilter('ceramics', this)">Ceramics</button>
     
     <select id="sortSelect">
   <option value="default">Sort By</option>

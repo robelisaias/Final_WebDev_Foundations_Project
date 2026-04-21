@@ -1,6 +1,10 @@
 const container = document.getElementById("product-container");
 
 let products = [];
+let currentFilter = "all";
+let currentSearch = "";
+let currentSort = "default";
+let filteredProducts = [];
 
 // Render products
 function renderProducts(productList) {
@@ -33,7 +37,10 @@ async function loadProducts() {
     }
 
     products = await response.json();
-    renderProducts(products);
+
+    // initial render
+    filteredProducts = products;
+    applyFilters();
 
   } catch (error) {
     console.error(error);
@@ -48,6 +55,67 @@ function viewProduct(id) {
   window.location.href = `product.html?id=${id}`;
 }
 
+
+//search functionality
+function handleSearch(value) {
+  currentSearch = value.toLowerCase();
+  applyFilters();
+}
+
+
+//filter functionality
+function setFilter(category, btn) {
+  currentFilter = category;
+
+  document.querySelectorAll(".filters button").forEach(b => {
+    b.classList.remove("active");
+  });
+
+  btn.classList.add("active");
+
+  applyFilters();
+}
+
+//sort functionality
+function handleSort(value) {
+  currentSort = value;
+  applyFilters();
+}
+
+document.getElementById("sortSelect").addEventListener("change", (e) => {
+  handleSort(e.target.value);
+});
+
+//Core function to apply search, filter, and sort
+function applyFilters() {
+  let result = [...products];
+
+  // SEARCH
+  if (currentSearch) {
+    result = result.filter(p =>
+      p.title.toLowerCase().includes(currentSearch)
+    );
+  }
+
+  // FILTER
+  if (currentFilter !== "all") {
+    result = result.filter(p =>
+  p.category?.toLowerCase() === currentFilter.toLowerCase()
+);
+  }
+
+  // SORT
+  if (currentSort === "low-high") {
+    result.sort((a, b) => a.price - b.price);
+  }
+
+  if (currentSort === "high-low") {
+    result.sort((a, b) => b.price - a.price);
+  }
+
+  filteredProducts = result;
+  renderProducts(filteredProducts);
+}
 
 
 // PRODUCT DETAILS PAGE LOGIC
@@ -130,5 +198,5 @@ async function loadCountry(){
 }
 
 
-loadCountry();
-loadcurrenty();
+//loadCountry();
+//loadcurrenty();
