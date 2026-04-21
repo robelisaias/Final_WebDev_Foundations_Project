@@ -224,9 +224,13 @@ if (form) {
     if (messageError) messageError.textContent = "";
 
     if (name.value.trim() === "") {
-      nameError.textContent = "Name is required";
-      isValid = false;
-    }
+  nameError.textContent = "Name is required";
+  name.classList.add("error");
+  isValid = false;
+} else {
+  name.classList.remove("error");
+  name.classList.add("success");
+}
 
     if (email.value.trim() === "") {
       emailError.textContent = "Email is required";
