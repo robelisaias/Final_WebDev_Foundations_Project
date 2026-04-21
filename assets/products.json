@@ -4,7 +4,7 @@
     "title": "Handwoven Basket",
     "price": 34.99,
     "category": "home decor",
-    "image": "assets/Handwoven_Basket.jpg ",
+    "image": "assets/Handwoven_Basket.jpg",
     "description": "Beautiful handmade basket from Eritrea."
   },
   {
@@ -62,5 +62,13 @@
   "category": "fashion",
   "image": "assets/Beaded_sandals.jpg",
   "description": "Handmade leather sandals decorated with colorful beadwork."
+},
+{
+  "id": 9,
+  "title": "African Leather Sling Bag",
+  "price": 44.99,
+  "category": "fashion",
+  "image": "assets/leather_sling_bag.jpg",
+  "description": "Handcrafted genuine leather sling bag with traditional African detailing."
 }
 ]

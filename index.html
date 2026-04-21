@@ -5,137 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Afrique Store</title>
 
-  
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-  
+  <!-- NAV -->
   <nav class="navbar">
     <h2 class="logo">Afrique</h2>
 
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
-      <li><a href="index.html#products">Shop</a></li>
+      <li><a href="#products">Shop</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  
-  <section class="hero">
-    <h1>Authentic African Products</h1>
-    <p>Discover authentic African craft and imported treasures. Each piece tells a story of heritage, artistry and tradition.</p>
-    <a href="#products" class="btn">Shop Now</a>
-  </section>
-<section class="searchAndFilter"><div class="search-filter">
+  <main>
 
-  <!-- SEARCH -->
-  <input 
-    type="text" 
-    id="searchInput" 
-    placeholder="Search products..."
-    oninput="handleSearch(this.value)"
-  />
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Authentic African Products</h1>
+      <p>Discover authentic African craft and imported treasures. Each piece tells a story of heritage, artistry and tradition.</p>
+      <a href="#products" class="btn">Shop Now</a>
+    </section>
 
-  <!-- FILTER BUTTONS -->
-  <div class="filters">
-    <h3>Filters:</h3>
-    <button onclick="setFilter('all', this)" class="active">All</button>
-<button onclick="setFilter('home decor', this)">Home Decor</button>
-<button onclick="setFilter('textiles', this)">Textiles</button>
-<button onclick="setFilter('art', this)">Art</button>
-<button onclick="setFilter('ceramics', this)">Ceramics</button>
-    
-    <select id="sortSelect">
-  <option value="default">Sort By</option>
-  <option value="low-high">Price: Low to High</option>
-  <option value="high-low">Price: High to Low</option>
-</select>
-  </div>
+    <!-- SEARCH + FILTER -->
+    <section class="searchAndFilter">
+      <div class="search-filter">
 
-</div></section>
-  
-  <section id="products" class="products">
-    <h2>Featured Products</h2>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search products..."
+          oninput="handleSearch(this.value)"
+        />
 
-    <!-- THIS is where JS will inject products later -->
-    <div id="product-container" class="product-grid">
+        <div class="filters">
+          <h3>Filters:</h3>
 
-      <!-- TEMPORARY STATIC CARD (we will remove later) -->
-      <div class="product-card">
-        <div class="product-img">Image</div>
-        <h3>Sample Product</h3>
-        <p>$29.99</p>
-        <button>View Product</button>
+          <button onclick="setFilter('all', this)" class="active">All</button>
+          <button onclick="setFilter('fashion', this)">Fashion</button>
+          <button onclick="setFilter('home decor', this)">Home Decor</button>
+          <button onclick="setFilter('textiles', this)">Textiles</button>
+          <button onclick="setFilter('art', this)">Art</button>
+          <button onclick="setFilter('ceramics', this)">Ceramics</button>
+          <button onclick="setFilter('jewelry', this)">Jewelry</button>
+          <button onclick="setFilter('instruments', this)">Instruments</button>
+
+          <select id="sortSelect">
+            <option value="default">Sort By</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+          </select>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="products">
+      <h2>Featured Products</h2>
+
+      <div id="product-container" class="product-grid">
+        <!-- JS injects products here -->
+      </div>
+    </section>
+
+    <!-- API SECTION -->
+    <section class="api-section">
+
+      <div class="api-card">
+        <h3>💱 Currency Exchange</h3>
+        <p id="currencyResult">Loading...</p>
+      </div>
+
+      <div class="api-card">
+        <h3>🌍 Country Spotlight</h3>
+        <p id="countryInfo">Loading...</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER (FIXED STRUCTURE) -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <h3>Afrique</h3>
+        <p>
+          Bringing the finest African crafts and imported goods to your doorstep.
+          Every product is ethically sourced and tells a story.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#products">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <ul>
+          <li>info@afrique.ca</li>
+          <li>Toronto, ON</li>
+          <li>Instagram</li>
+        </ul>
       </div>
 
     </div>
-  </section>
 
-  <section class="api-section">
-
-  <!-- Currency -->
-  <div class="api-card" id="currency-card">
-    <h3>💱 Currency Exchange</h3>
-    <p id="currencyResult">Loading...</p>
-  </div>
-
-  <!-- Country -->
-  <div class="api-card" id="country-card">
-    <h3>🌍 Country Spotlight</h3>
-    <p id="countryInfo">Loading...</p>
-  </div>
-
-</section>
-
-  <footer>
-    <footer class="footer">
-  <div class="footer-container">
-
-    
-    <div class="footer-brand">
-      <h3>Afrique</h3>
-      <p>
-        Bringing the finest African crafts and imported goods to your doorstep.
-        Every product is ethically sourced and tells a story.
-      </p>
+    <div class="footer-bottom">
+      <span>© 2026 Afrique Goods & Imports. All rights reserved.</span>
+      <span>Web developed by Robel</span>
     </div>
-
-    
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#products">Shop</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-
-    
-    <div class="footer-contact">
-      <h4>Contact</h4>
-      <ul>
-        <li>info@afrique.ca</li>
-        <li>Toronto, ON</li>
-        <li>Instagram</li>
-      </ul>
-    </div>
-
-  </div>
-
-  
-  <div class="footer-bottom">
-    <span>© 2026 Afrique Goods & Imports. All rights reserved.</span>
-    <span>Web developed by Robel</span>
-  </div>
-</footer>
   </footer>
 
-  <script src="js/script.js"> </script>
+  <script src="js/script.js"></script>
+
 </body>
-
-
-
 </html>

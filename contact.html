@@ -1,60 +1,103 @@
-<section class="contact-page">
-  <h2>Contact Us</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Afrique</title>
 
-  <p>We’d love to hear from you.</p>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <form>
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea placeholder="Message"></textarea>
-    <button>Send Message</button>
-  </form>
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-  <div class="contact-info">
-    <p>📍 Toronto, Canada</p>
-    <p>📧 info@afrique.ca</p>
-  </div>
-</section>
+<body>
 
-<footer>
-    <footer class="footer">
-  <div class="footer-container">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <h2 class="logo">Afrique</h2>
 
-    
-    <div class="footer-brand">
-      <h3>Afrique</h3>
-      <p>
-        Bringing the finest African crafts and imported goods to your doorstep.
-        Every product is ethically sourced and tells a story.
-      </p>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#products">Shop</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-page">
+      <h2>Contact Us</h2>
+
+      <p>We’d love to hear from you.</p>
+
+      <form id="contactForm">
+
+  <input type="text" id="name" placeholder="Your Name">
+  <small class="error" id="nameError"></small>
+
+  <input type="email" id="email" placeholder="Your Email">
+  <small class="error" id="emailError"></small>
+
+  <textarea id="message" placeholder="Message"></textarea>
+  <small class="error" id="messageError"></small>
+
+  <button type="submit">Send Message</button>
+
+</form>
+
+      <div class="contact-info">
+        <p>📍 Toronto, Canada</p>
+        <p>📧 info@afrique.ca</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <h3>Afrique</h3>
+        <p>
+          Bringing the finest African crafts and imported goods to your doorstep.
+          Every product is ethically sourced and tells a story.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#products">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <ul>
+          <li>info@afrique.ca</li>
+          <li>Toronto, ON</li>
+          <li>Instagram</li>
+        </ul>
+      </div>
+
     </div>
 
-    
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#products">Shop</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <span>© 2026 Afrique Goods & Imports. All rights reserved.</span>
+      <span>Web developed by Robel</span>
     </div>
-
-    
-    <div class="footer-contact">
-      <h4>Contact</h4>
-      <ul>
-        <li>info@afrique.ca</li>
-        <li>Toronto, ON</li>
-        <li>Instagram</li>
-      </ul>
-    </div>
-
-  </div>
-
-  
-  <div class="footer-bottom">
-    <span>© 2026 Afrique Goods & Imports. All rights reserved.</span>
-    <span>Web developed by Robel</span>
-  </div>
-</footer>
   </footer>
+
+  <div id="successPopup" class="popup hidden">
+  <div class="popup-content">
+    <p>✅ Message sent successfully!</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>

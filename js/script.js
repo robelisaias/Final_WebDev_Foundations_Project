@@ -1,14 +1,41 @@
 const container = document.getElementById("product-container");
 
 let products = [];
+let filteredProducts = [];
+
 let currentFilter = "all";
 let currentSearch = "";
 let currentSort = "default";
-let filteredProducts = [];
 
-// Render products
+/* =========================
+   POPUP (GLOBAL SAFE)
+========================= */
+const popup = document.getElementById("successPopup");
+
+function showPopup() {
+  if (popup) popup.classList.remove("hidden");
+}
+
+function closePopup() {
+  if (popup) popup.classList.add("hidden");
+}
+
+// make available for inline HTML onclick=""
+window.closePopup = closePopup;
+window.showPopup = showPopup;
+
+/* =========================
+   RENDER PRODUCTS
+========================= */
 function renderProducts(productList) {
+  if (!container) return;
+
   container.innerHTML = "";
+
+  if (!productList.length) {
+    container.innerHTML = "<p>No products found.</p>";
+    return;
+  }
 
   productList.forEach(product => {
     const card = document.createElement("div");
@@ -16,29 +43,39 @@ function renderProducts(productList) {
 
     card.innerHTML = `
       <div class="product-img">
-        <img src="${product.image}" alt="${product.title}" style="width:100%; height:100%; object-fit:cover;">
+        <img 
+          src="${product.image?.trim()}" 
+          alt="${product.title}" 
+          onerror="this.src='assets/fallback.jpg'"
+          style="width:100%; height:100%; object-fit:cover;"
+        >
       </div>
+
       <h3>${product.title}</h3>
       <p>$${product.price}</p>
-      <button onclick="viewProduct(${product.id})">View Product</button>
+
+      <button onclick="viewProduct(${product.id})">
+        View Product
+      </button>
     `;
 
     container.appendChild(card);
   });
 }
 
-// Fetch data
+/* =========================
+   LOAD PRODUCTS
+========================= */
 async function loadProducts() {
+  if (!container) return;
+
   try {
     const response = await fetch("assets/products.json");
 
-    if (!response.ok) {
-      throw new Error("Failed to load products");
-    }
+    if (!response.ok) throw new Error("Failed to load products");
 
     products = await response.json();
 
-    // initial render
     filteredProducts = products;
     applyFilters();
 
@@ -50,20 +87,24 @@ async function loadProducts() {
 
 loadProducts();
 
-// Navigate to product page
+/* =========================
+   NAVIGATION
+========================= */
 function viewProduct(id) {
   window.location.href = `product.html?id=${id}`;
 }
 
-
-//search functionality
+/* =========================
+   SEARCH
+========================= */
 function handleSearch(value) {
   currentSearch = value.toLowerCase();
   applyFilters();
 }
 
-
-//filter functionality
+/* =========================
+   FILTER
+========================= */
 function setFilter(category, btn) {
   currentFilter = category;
 
@@ -71,22 +112,30 @@ function setFilter(category, btn) {
     b.classList.remove("active");
   });
 
-  btn.classList.add("active");
+  if (btn) btn.classList.add("active");
 
   applyFilters();
 }
 
-//sort functionality
+/* =========================
+   SORT
+========================= */
 function handleSort(value) {
   currentSort = value;
   applyFilters();
 }
 
-document.getElementById("sortSelect").addEventListener("change", (e) => {
-  handleSort(e.target.value);
-});
+const sortSelect = document.getElementById("sortSelect");
 
-//Core function to apply search, filter, and sort
+if (sortSelect) {
+  sortSelect.addEventListener("change", (e) => {
+    handleSort(e.target.value);
+  });
+}
+
+/* =========================
+   CORE FILTER ENGINE
+========================= */
 function applyFilters() {
   let result = [...products];
 
@@ -100,8 +149,8 @@ function applyFilters() {
   // FILTER
   if (currentFilter !== "all") {
     result = result.filter(p =>
-  p.category?.toLowerCase() === currentFilter.toLowerCase()
-);
+      p.category?.toLowerCase() === currentFilter.toLowerCase()
+    );
   }
 
   // SORT
@@ -117,9 +166,9 @@ function applyFilters() {
   renderProducts(filteredProducts);
 }
 
-
-// PRODUCT DETAILS PAGE LOGIC
-
+/* =========================
+   PRODUCT DETAILS PAGE
+========================= */
 const detailsContainer = document.getElementById("product-details-container");
 
 if (detailsContainer) {
@@ -131,13 +180,13 @@ if (detailsContainer) {
     try {
       const response = await fetch("assets/products.json");
 
-      if (!response.ok) {
-        throw new Error("Failed to load product");
-      }
+      if (!response.ok) throw new Error("Failed to load product");
 
-      const products = await response.json();
+      const data = await response.json();
 
-      const product = products.find(p => p.id == productId);
+      const product = data.find(p =>
+        String(p.id) === String(productId)
+      );
 
       if (!product) {
         detailsContainer.innerHTML = "<p>Product not found.</p>";
@@ -147,12 +196,15 @@ if (detailsContainer) {
       detailsContainer.innerHTML = `
         <div class="product-box">
           <img src="${product.image}" alt="${product.title}">
-          
+
           <div class="product-info">
             <h1>${product.title}</h1>
             <p>${product.description}</p>
             <p><strong>Price:</strong> $${product.price}</p>
-            <button onclick="addToCart(${product.id})">Add to Cart</button>
+
+            <button onclick="addToCart(${product.id})">
+              Add to Cart
+            </button>
           </div>
         </div>
       `;
@@ -166,37 +218,90 @@ if (detailsContainer) {
   loadProductDetails();
 }
 
-//Api implementation section below
+/* =========================
+   CONTACT FORM VALIDATION
+========================= */
+const form = document.getElementById("contactForm");
 
-async function loadcurrenty(){
+if (form) {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  try{
-    const response = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
-    
-    const data = await response.json();
+    let isValid = true;
 
-    document.getElementById('currencyResult').textContent = `1 USD = ${data.rates.CAD} CAD`;
-  }
-  catch(error){
-    document.getElementById('currencyResult').textContent = "Failed to load currency data.";}
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const messageError = document.getElementById("messageError");
+
+    if (nameError) nameError.textContent = "";
+    if (emailError) emailError.textContent = "";
+    if (messageError) messageError.textContent = "";
+
+    if (name.value.trim() === "") {
+      nameError.textContent = "Name is required";
+      isValid = false;
+    }
+
+    if (email.value.trim() === "") {
+      emailError.textContent = "Email is required";
+      isValid = false;
+    } else if (!email.value.includes("@")) {
+      emailError.textContent = "Please enter a valid email";
+      isValid = false;
+    }
+
+    if (message.value.trim() === "") {
+      messageError.textContent = "Message cannot be empty";
+      isValid = false;
+    } else if (message.value.trim().length < 10) {
+      messageError.textContent = "Message must be at least 10 characters";
+      isValid = false;
+    }
+
+    if (isValid) {
+      showPopup();
+      form.reset();
+    }
+  });
 }
 
+/* =========================
+   API (SAFE)
+========================= */
+async function loadCurrency() {
+  try {
+    const response = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
+    const data = await response.json();
 
-async function loadCountry(){
+    const el = document.getElementById("currencyResult");
+    if (el) el.textContent = `1 USD = ${data.rates.CAD} CAD`;
 
-  try{
+  } catch {
+    const el = document.getElementById("currencyResult");
+    if (el) el.textContent = "Failed to load currency data.";
+  }
+}
+
+async function loadCountry() {
+  try {
     const response = await fetch("https://restcountries.com/v3.1/region/africa");
     const data = await response.json();
 
     const random = data[Math.floor(Math.random() * data.length)];
 
-    document.getElementById("countryInfo").textContent =
-      `${random.name.common} — Capital: ${random.capital}`;
+    const el = document.getElementById("countryInfo");
+    if (el) el.textContent = `${random.name.common} — Capital: ${random.capital}`;
+
+  } catch {
+    const el = document.getElementById("countryInfo");
+    if (el) el.textContent = "Failed to load country data.";
   }
-  catch(error){
-    document.getElementById("countryInfo").textContent = "Failed to load country data.";}
 }
 
-
-//loadCountry();
-//loadcurrenty();
+// Optional
+// loadCurrency();
+// loadCountry();
