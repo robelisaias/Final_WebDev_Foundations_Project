@@ -7,9 +7,7 @@ let currentFilter = "all";
 let currentSearch = "";
 let currentSort = "default";
 
-/* =========================
-   POPUP (GLOBAL SAFE)
-========================= */
+
 const popup = document.getElementById("successPopup");
 
 function showPopup() {
@@ -24,9 +22,8 @@ function closePopup() {
 window.closePopup = closePopup;
 window.showPopup = showPopup;
 
-/* =========================
-   RENDER PRODUCTS
-========================= */
+/* render products */
+
 function renderProducts(productList) {
   if (!container) return;
 
@@ -63,9 +60,7 @@ function renderProducts(productList) {
   });
 }
 
-/* =========================
-   LOAD PRODUCTS
-========================= */
+/* load products */
 async function loadProducts() {
   if (!container) return;
 
@@ -87,24 +82,18 @@ async function loadProducts() {
 
 loadProducts();
 
-/* =========================
-   NAVIGATION
-========================= */
+/* navigation*/
 function viewProduct(id) {
   window.location.href = `product.html?id=${id}`;
 }
 
-/* =========================
-   SEARCH
-========================= */
+/* search */
 function handleSearch(value) {
   currentSearch = value.toLowerCase();
   applyFilters();
 }
 
-/* =========================
-   FILTER
-========================= */
+/* filter */
 function setFilter(category, btn) {
   currentFilter = category;
 
@@ -117,9 +106,7 @@ function setFilter(category, btn) {
   applyFilters();
 }
 
-/* =========================
-   SORT
-========================= */
+/* sort */
 function handleSort(value) {
   currentSort = value;
   applyFilters();
@@ -133,9 +120,7 @@ if (sortSelect) {
   });
 }
 
-/* =========================
-   CORE FILTER ENGINE
-========================= */
+/* Core filter engine */
 function applyFilters() {
   let result = [...products];
 
@@ -166,9 +151,8 @@ function applyFilters() {
   renderProducts(filteredProducts);
 }
 
-/* =========================
-   PRODUCT DETAILS PAGE
-========================= */
+/*Product details page  */
+
 const detailsContainer = document.getElementById("product-details-container");
 
 if (detailsContainer) {
@@ -218,9 +202,7 @@ if (detailsContainer) {
   loadProductDetails();
 }
 
-/* =========================
-   CONTACT FORM VALIDATION
-========================= */
+/* Contacts form validation */
 const form = document.getElementById("contactForm");
 
 if (form) {
@@ -269,9 +251,7 @@ if (form) {
   });
 }
 
-/* =========================
-   API (SAFE)
-========================= */
+/* Api */
 async function loadCurrency() {
   try {
     const response = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
@@ -302,6 +282,6 @@ async function loadCountry() {
   }
 }
 
-// Optional
-// loadCurrency();
-// loadCountry();
+
+loadCurrency();
+loadCountry();
