@@ -129,5 +129,5 @@ Used JavaScript event listeners on the search input and dynamically updated the 
 ## 📎 Submission Links
 
 - GitHub Repository: https://github.com/robelisaias/Final_WebDev_Foundations_Project.git 
-- Live Deployment: (Coming soon)  
+- Live Deployment: https://afrique-shop.netlify.app/  
 # Final_WebDev_Foundations_Project
